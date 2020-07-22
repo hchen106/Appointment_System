@@ -1,11 +1,11 @@
-#include "login.h"
+#include "src/view/UI.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Login w;
+    LoginUI w;
     w.show();
     return a.exec();
 }
