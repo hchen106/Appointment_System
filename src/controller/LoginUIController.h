@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <boost/asio.hpp>
 
 namespace Controller{
 
@@ -15,13 +16,13 @@ namespace Controller{
 
             int TcpConnection();
 
-            char* isVertified();
+            std::string isVertified();
 
             //Provider CreateProvider(){}
         private:
             std::string IP;
             int PORT;
-
+            int tcp_socket;
 
     };
 

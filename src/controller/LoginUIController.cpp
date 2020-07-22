@@ -4,7 +4,9 @@
 
 Controller::LoginUIController::LoginUIController(std::string IP , int PORT) {
     //TODO:
-    
+    this->IP = IP;
+    this->PORT = PORT;
+    this->tcp_socket = TcpConnection();
 
 }
 
@@ -12,10 +14,12 @@ Controller::LoginUIController::LoginUIController(std::string IP , int PORT) {
 
 int Controller::LoginUIController::TcpConnection() {
     //TODO: 
+    return 1;
 
 }
 
 
-char* Controller::LoginUIController::isVertified(){
+std::string Controller::LoginUIController::isVertified(){
     //TODO:
+    return "";
 }
