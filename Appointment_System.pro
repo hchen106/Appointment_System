@@ -18,11 +18,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += server.h ui_login.h src/controller/LoginUIController.h src/view/UI.h
+HEADERS += server.h ui_login.h src/controller/LoginUIController.h src/view/UI.h src/controller/DbManager.h
 FORMS += src/view/login.ui
 SOURCES += main.cpp \
            server.cpp \
            src/controller/LoginUIController.cpp \
+           src/controller/DbManager.cpp \
            src/model/Provider.cpp \
            src/model/User.cpp \
            src/view/loginUI.cpp
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql
