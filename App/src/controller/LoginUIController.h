@@ -14,7 +14,7 @@ namespace Controller{
 
             //~LoginUIController();
 
-            int TcpConnection();
+            void TcpConnection();
 
             std::string isVertified();
 
