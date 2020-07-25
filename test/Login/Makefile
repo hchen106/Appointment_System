@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtSql -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I. -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtSql -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,10 +37,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Login1.0.0
-DISTDIR = /home/huihao/Desktop/Login_test/Login/.tmp/Login1.0.0
+DISTDIR = /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/.tmp/Login1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Sql.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
+LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Sql.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -52,25 +52,25 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = DbManager.cpp \
+SOURCES       = addclient.cpp \
+		DbManager.cpp \
 		login_ui.cpp \
 		main.cpp \
 		mainsignup.cpp \
-		secdialog.cpp \
-		signup_ui.cpp moc_login_ui.cpp \
+		mainwindow.cpp moc_addclient.cpp \
+		moc_login_ui.cpp \
 		moc_mainsignup.cpp \
-		moc_secdialog.cpp \
-		moc_signup_ui.cpp
-OBJECTS       = DbManager.o \
+		moc_mainwindow.cpp
+OBJECTS       = addclient.o \
+		DbManager.o \
 		login_ui.o \
 		main.o \
 		mainsignup.o \
-		secdialog.o \
-		signup_ui.o \
+		mainwindow.o \
+		moc_addclient.o \
 		moc_login_ui.o \
 		moc_mainsignup.o \
-		moc_secdialog.o \
-		moc_signup_ui.o
+		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -138,6 +138,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resources.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/moc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/uic.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/thread.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf \
@@ -145,19 +146,20 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		Login.pro DbManager.h \
+		Login.pro addclient.h \
+		DbManager.h \
 		login_ui.h \
 		mainsignup.h \
-		secdialog.h \
-		signup_ui.h \
+		mainwindow.h \
+		ui_addclient.h \
 		ui_login_ui.h \
-		ui_secdialog.h \
-		ui_signup_ui.h DbManager.cpp \
+		ui_mainsignup.h \
+		ui_mainwindow.h addclient.cpp \
+		DbManager.cpp \
 		login_ui.cpp \
 		main.cpp \
 		mainsignup.cpp \
-		secdialog.cpp \
-		signup_ui.cpp
+		mainwindow.cpp
 QMAKE_TARGET  = Login
 DESTDIR       = 
 TARGET        = Login
@@ -166,7 +168,7 @@ TARGET        = Login
 first: all
 ####### Build rules
 
-Login:  $(OBJECTS)  
+Login: ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: Login.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -236,6 +238,7 @@ Makefile: Login.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resources.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/moc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/uic.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/thread.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf \
@@ -312,6 +315,7 @@ Makefile: Login.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resources.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/moc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/uic.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/thread.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf:
@@ -335,8 +339,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents DbManager.h login_ui.h mainsignup.h secdialog.h signup_ui.h ui_login_ui.h ui_secdialog.h ui_signup_ui.h $(DISTDIR)/
-	$(COPY_FILE) --parents DbManager.cpp login_ui.cpp main.cpp mainsignup.cpp secdialog.cpp signup_ui.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents addclient.h DbManager.h login_ui.h mainsignup.h mainwindow.h ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents addclient.cpp DbManager.cpp login_ui.cpp main.cpp mainsignup.cpp mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents addclient.ui login_ui.ui mainsignup.ui mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -368,68 +373,100 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_login_ui.cpp moc_mainsignup.cpp moc_secdialog.cpp moc_signup_ui.cpp
+compiler_moc_header_make_all: moc_addclient.cpp moc_login_ui.cpp moc_mainsignup.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_login_ui.cpp moc_mainsignup.cpp moc_secdialog.cpp moc_signup_ui.cpp
-moc_login_ui.cpp: login_ui.h \
-		mainsignup.h \
+	-$(DEL_FILE) moc_addclient.cpp moc_login_ui.cpp moc_mainsignup.cpp moc_mainwindow.cpp
+moc_addclient.cpp: addclient.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Login_test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Login_test/Login -I/home/huihao/Desktop/Login_test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include login_ui.h -o moc_login_ui.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include addclient.h -o moc_addclient.cpp
+
+moc_login_ui.cpp: login_ui.h \
+		mainsignup.h \
+		mainwindow.h \
+		addclient.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include login_ui.h -o moc_login_ui.cpp
 
 moc_mainsignup.cpp: mainsignup.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Login_test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Login_test/Login -I/home/huihao/Desktop/Login_test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainsignup.h -o moc_mainsignup.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainsignup.h -o moc_mainsignup.cpp
 
-moc_secdialog.cpp: secdialog.h \
+moc_mainwindow.cpp: mainwindow.h \
+		addclient.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Login_test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Login_test/Login -I/home/huihao/Desktop/Login_test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include secdialog.h -o moc_secdialog.cpp
-
-moc_signup_ui.cpp: signup_ui.h \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Login_test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Login_test/Login -I/home/huihao/Desktop/Login_test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include signup_ui.h -o moc_signup_ui.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
+compiler_uic_make_all: ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h
+compiler_uic_clean:
+	-$(DEL_FILE) ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h
+ui_addclient.h: addclient.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic addclient.ui -o ui_addclient.h
+
+ui_login_ui.h: login_ui.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic login_ui.ui -o ui_login_ui.h
+
+ui_mainsignup.h: mainsignup.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic mainsignup.ui -o ui_mainsignup.h
+
+ui_mainwindow.h: mainwindow.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic mainwindow.ui -o ui_mainwindow.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+addclient.o: addclient.cpp addclient.h \
+		ui_addclient.h \
+		DbManager.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addclient.o addclient.cpp
 
 DbManager.o: DbManager.cpp DbManager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DbManager.o DbManager.cpp
 
 login_ui.o: login_ui.cpp login_ui.h \
 		mainsignup.h \
+		mainwindow.h \
+		addclient.h \
 		ui_login_ui.h \
 		DbManager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login_ui.o login_ui.cpp
 
 main.o: main.cpp login_ui.h \
-		mainsignup.h
+		mainsignup.h \
+		mainwindow.h \
+		addclient.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainsignup.o: mainsignup.cpp mainsignup.h \
+		ui_mainsignup.h \
 		DbManager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainsignup.o mainsignup.cpp
 
-secdialog.o: secdialog.cpp secdialog.h \
-		ui_secdialog.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o secdialog.o secdialog.cpp
+mainwindow.o: mainwindow.cpp mainwindow.h \
+		addclient.h \
+		ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
-signup_ui.o: signup_ui.cpp signup_ui.h \
-		ui_signup_ui.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signup_ui.o signup_ui.cpp
+moc_addclient.o: moc_addclient.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_addclient.o moc_addclient.cpp
 
 moc_login_ui.o: moc_login_ui.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_login_ui.o moc_login_ui.cpp
@@ -437,11 +474,8 @@ moc_login_ui.o: moc_login_ui.cpp
 moc_mainsignup.o: moc_mainsignup.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainsignup.o moc_mainsignup.cpp
 
-moc_secdialog.o: moc_secdialog.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_secdialog.o moc_secdialog.cpp
-
-moc_signup_ui.o: moc_signup_ui.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_signup_ui.o moc_signup_ui.cpp
+moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 ####### Install
 

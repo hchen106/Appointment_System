@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QString>
 #include "mainsignup.h"
+#include "mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Login_UI; }
@@ -25,5 +26,7 @@ private slots:
 private:
     Ui::Login_UI *ui;
     MainSignup *mainsignup;
+    MainWindow *mainwindow;
+
 };
 #endif // LOGIN_UI_H

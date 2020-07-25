@@ -4,7 +4,7 @@
 #include "DbManager.h"
 #include <QMessageBox>
 #include <QDebug>
-static const QString path = "/home/huihao/Desktop/Login_test/Login/provider.db";
+static const QString path = "/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/provider.db";
 
 
 Login_UI::Login_UI(QWidget *parent)
@@ -40,7 +40,10 @@ void Login_UI::on_login_btn_clicked()
     qDebug() << loginID;
 
     if(db.loginAccount(loginID, password)) {
-        QMessageBox::information(this, "Login", "Login Successful");
+        mainwindow = new MainWindow(this);
+        mainwindow->show();
+        this->hide();
+        //QMessageBox::information(this, "Login", "Login Successful");
     }else{
         QMessageBox::warning(this, "Login", "ID or Password is incorrect");
     }

@@ -33,11 +33,14 @@ bool DbManager::signupAccount(const QString& name, const QString& loginID, const
     query.bindValue(":password", password);
     query.bindValue(":loginID", loginID);
     qDebug() <<"bind" << query.lastError();
-    if(query.exec()) {
-        success = true;
-    }else{
-        qDebug() <<"fail to signup" << query.lastError();
+    if(checkExist(loginID)) {
+        if(query.exec()) {
+            success = true;
+        }else{
+            qDebug() <<"fail to signup" << query.lastError();
+        }
     }
+
 
     return success;
 }
@@ -57,3 +60,24 @@ bool DbManager::loginAccount(const QString& loginID, const QString& password) {
     qDebug() <<"fail to login" << query.lastError();
     return success;
 }
+
+bool DbManager::checkExist(const QString& loginID) {
+    bool success = false;
+    QSqlQuery query;
+    query.prepare("SELECT loginID FROM provider WHERE loginID = (:loginID)");
+    query.bindValue(":loginID", loginID);
+    if(query.exec()) {
+        if(!query.next()) {
+            success = true;
+        }
+    }
+    return success;
+}
+
+bool DbManager::addNewClient(const QString& name, const QString& birthday, const QString& email, const QString& provider, const int phone, const QString& address) {
+    bool success = false;
+    QSqlQuery query;
+    query.prepare("");
+
+}
+
