@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I. -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtSql -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = Appointment_System1.0.0
 DISTDIR = /home/huihao/Desktop/Appointment_System/Appointment_System/.tmp/Appointment_System1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
+LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Sql.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -57,13 +57,19 @@ SOURCES       = main.cpp \
 		src/controller/LoginUIController.cpp \
 		src/model/Provider.cpp \
 		src/model/User.cpp \
-		src/view/loginUI.cpp moc_UI.cpp
+		src/view/loginUI.cpp \
+		src/view/mainwindow.cpp \
+		src/view/signupUI.cpp \
+		src/controller/DbManager.cpp moc_UI.cpp
 OBJECTS       = main.o \
 		server.o \
 		LoginUIController.o \
 		Provider.o \
 		User.o \
 		loginUI.o \
+		mainwindow.o \
+		signupUI.o \
+		DbManager.o \
 		moc_UI.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -132,6 +138,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resources.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/moc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/uic.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/thread.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf \
@@ -142,12 +149,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		Appointment_System.pro server.h \
 		ui_login.h \
 		src/controller/LoginUIController.h \
-		src/view/UI.h main.cpp \
+		src/view/UI.h \
+		src/controller/DbManager.h main.cpp \
 		server.cpp \
 		src/controller/LoginUIController.cpp \
 		src/model/Provider.cpp \
 		src/model/User.cpp \
-		src/view/loginUI.cpp
+		src/view/loginUI.cpp \
+		src/view/mainwindow.cpp \
+		src/view/signupUI.cpp \
+		src/controller/DbManager.cpp
 QMAKE_TARGET  = Appointment_System
 DESTDIR       = 
 TARGET        = Appointment_System
@@ -156,7 +167,7 @@ TARGET        = Appointment_System
 first: all
 ####### Build rules
 
-Appointment_System:  $(OBJECTS)  
+Appointment_System: ui_login.h ui_mainwindow.h ui_signup.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: Appointment_System.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -226,6 +237,7 @@ Makefile: Appointment_System.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resources.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/moc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/uic.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/thread.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf \
@@ -302,6 +314,7 @@ Makefile: Appointment_System.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resources.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/moc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/uic.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/unix/thread.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qmake_use.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/file_copies.prf:
@@ -325,8 +338,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents server.h ui_login.h src/controller/LoginUIController.h src/view/UI.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp server.cpp src/controller/LoginUIController.cpp src/model/Provider.cpp src/model/User.cpp src/view/loginUI.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents server.h ui_login.h src/controller/LoginUIController.h src/view/UI.h src/controller/DbManager.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp server.cpp src/controller/LoginUIController.cpp src/model/Provider.cpp src/model/User.cpp src/view/loginUI.cpp src/view/mainwindow.cpp src/view/signupUI.cpp src/controller/DbManager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/view/login.ui src/view/mainwindow.ui src/view/signup.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -363,26 +377,45 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_UI.cpp
 moc_UI.cpp: src/view/UI.h \
 		src/controller/LoginUIController.h \
+		src/view/signupUI.h \
+		src/view/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System -I/home/huihao/Desktop/Appointment_System/Appointment_System -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/view/UI.h -o moc_UI.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System -I/home/huihao/Desktop/Appointment_System/Appointment_System -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/view/UI.h -o moc_UI.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
+compiler_uic_make_all: ui_login.h ui_mainwindow.h ui_signup.h
+compiler_uic_clean:
+	-$(DEL_FILE) ui_login.h ui_mainwindow.h ui_signup.h
+ui_login.h: src/view/login.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic src/view/login.ui -o ui_login.h
+
+ui_mainwindow.h: src/view/mainwindow.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic src/view/mainwindow.ui -o ui_mainwindow.h
+
+ui_signup.h: src/view/signup.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic src/view/signup.ui -o ui_signup.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
 main.o: main.cpp src/view/UI.h \
-		src/controller/LoginUIController.h
+		src/controller/LoginUIController.h \
+		src/view/signupUI.h \
+		src/view/mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 server.o: server.cpp server.h
@@ -399,8 +432,27 @@ User.o: src/model/User.cpp
 
 loginUI.o: src/view/loginUI.cpp src/view/UI.h \
 		src/controller/LoginUIController.h \
+		src/view/signupUI.h \
+		src/view/mainwindow.h \
 		ui_login.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginUI.o src/view/loginUI.cpp
+
+mainwindow.o: src/view/mainwindow.cpp src/view/UI.h \
+		src/controller/LoginUIController.h \
+		src/view/signupUI.h \
+		src/view/mainwindow.h \
+		ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o src/view/mainwindow.cpp
+
+signupUI.o: src/view/signupUI.cpp src/view/UI.h \
+		src/controller/LoginUIController.h \
+		src/view/signupUI.h \
+		src/view/mainwindow.h \
+		ui_signup.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signupUI.o src/view/signupUI.cpp
+
+DbManager.o: src/controller/DbManager.cpp src/controller/DbManager.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DbManager.o src/controller/DbManager.cpp
 
 moc_UI.o: moc_UI.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_UI.o moc_UI.cpp

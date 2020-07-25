@@ -1,4 +1,4 @@
-#include "UI.h"
+#include "src/view/UI.h"
 #include "ui_login.h"
 #include "src/controller/LoginUIController.h"
 
@@ -14,5 +14,20 @@ LoginUI::LoginUI(QWidget *parent): QMainWindow(parent), ui(new Ui::LoginUI)
 LoginUI::~LoginUI()
 {
     delete ui;
+}
+
+void LoginUI::on_signup_btn_clicked() {
+    signupui = new signup(this);
+    signupui -> show();
+
+
+}
+
+void LoginUI::on_login_btn_clicked() {
+    //if(isVertified() == "id") {
+        mainwindow = new MainWindow(this);
+        mainwindow -> show();
+        this -> hide();
+    //}
 }
 

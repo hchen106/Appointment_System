@@ -1,41 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Login_UI</class>
- <widget class="QMainWindow" name="Login_UI">
+ <class>signup</class>
+ <widget class="QMainWindow" name="signup">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>331</width>
-    <height>131</height>
+    <width>401</width>
+    <height>162</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Login_UI</string>
+   <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="id_label">
+      <item row="1" column="0">
+       <widget class="QLabel" name="signup_username_label">
         <property name="text">
-         <string>Login ID</string>
+         <string>Username</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="password_label">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="signup_username_entry"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="signup_name_entry"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="signup_name_label">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="signup_password_label">
         <property name="text">
          <string>Password</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="id_entry"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="password_entry"/>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="signup_password_entry"/>
       </item>
      </layout>
     </item>
@@ -45,13 +55,6 @@
        <widget class="QPushButton" name="signup_btn">
         <property name="text">
          <string>Sign Up</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="login_btn">
-        <property name="text">
-         <string>Login</string>
         </property>
        </widget>
       </item>
