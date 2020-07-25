@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Login1.0.0
-DISTDIR = /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/.tmp/Login1.0.0
+DISTDIR = /home/huihao/Desktop/newclone/Appointment_System/test/Login/.tmp/Login1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Sql.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
@@ -150,11 +150,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		DbManager.h \
 		login_ui.h \
 		mainsignup.h \
-		mainwindow.h \
-		ui_addclient.h \
-		ui_login_ui.h \
-		ui_mainsignup.h \
-		ui_mainwindow.h addclient.cpp \
+		mainwindow.h addclient.cpp \
 		DbManager.cpp \
 		login_ui.cpp \
 		main.cpp \
@@ -339,7 +335,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents addclient.h DbManager.h login_ui.h mainsignup.h mainwindow.h ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents addclient.h DbManager.h login_ui.h mainsignup.h mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents addclient.cpp DbManager.cpp login_ui.cpp main.cpp mainsignup.cpp mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents addclient.ui login_ui.ui mainsignup.ui mainwindow.ui $(DISTDIR)/
 
@@ -379,7 +375,7 @@ compiler_moc_header_clean:
 moc_addclient.cpp: addclient.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include addclient.h -o moc_addclient.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/newclone/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/newclone/Appointment_System/test/Login -I/home/huihao/Desktop/newclone/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include addclient.h -o moc_addclient.cpp
 
 moc_login_ui.cpp: login_ui.h \
 		mainsignup.h \
@@ -387,18 +383,18 @@ moc_login_ui.cpp: login_ui.h \
 		addclient.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include login_ui.h -o moc_login_ui.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/newclone/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/newclone/Appointment_System/test/Login -I/home/huihao/Desktop/newclone/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include login_ui.h -o moc_login_ui.cpp
 
 moc_mainsignup.cpp: mainsignup.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainsignup.h -o moc_mainsignup.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/newclone/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/newclone/Appointment_System/test/Login -I/home/huihao/Desktop/newclone/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainsignup.h -o moc_mainsignup.cpp
 
 moc_mainwindow.cpp: mainwindow.h \
 		addclient.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/Appointment_System/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/home/huihao/Desktop/Appointment_System/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/newclone/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/newclone/Appointment_System/test/Login -I/home/huihao/Desktop/newclone/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:

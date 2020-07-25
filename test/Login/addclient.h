@@ -17,6 +17,9 @@ public:
     ~addClient();
 
 
+private slots:
+    void on_add_btn_clicked();
+
 private:
     Ui::addClient *ui;
 };
