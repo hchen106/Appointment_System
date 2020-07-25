@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include <iostream>
 
-static const QString path = "/home/huihao/Desktop/Login_test/Login/provider.db";
+static const QString path = "/home/huihao/Desktop/Appointment_System/Appointment_System/Login/provider.db";
 MainSignup::MainSignup(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainSignup)

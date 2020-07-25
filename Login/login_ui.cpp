@@ -4,7 +4,7 @@
 #include "DbManager.h"
 #include <QMessageBox>
 #include <QDebug>
-static const QString path = "/home/huihao/Desktop/Login_test/Login/provider.db";
+static const QString path = "/home/huihao/Desktop/Appointment_System/Appointment_System/Login/provider.db";
 
 
 Login_UI::Login_UI(QWidget *parent)

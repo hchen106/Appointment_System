@@ -12,6 +12,8 @@ public:
 
         bool loginAccount(const QString& loginID, const QString& password);
 
+        bool checkExist(const QString& loginID);
+
 
 private:
         QSqlDatabase m_db;
