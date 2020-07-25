@@ -1,4 +1,4 @@
-#include "src/controller/DbManager.h"
+#include "controller/DbManager.h"
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>

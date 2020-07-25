@@ -4,7 +4,7 @@
 #include <QMainWindow>
 
 #include <iostream>
-#include "src/controller/LoginUIController.h"
+#include "controller/LoginUIController.h"
 //#include "src/view/signupUI.h"
 //#include "src/view/mainwindow.h"
 #include <string>

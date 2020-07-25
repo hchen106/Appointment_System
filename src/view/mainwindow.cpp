@@ -1,4 +1,4 @@
-#include "src/view/UI.h"
+#include "view/UI.h"
 #include "ui_mainwindow.h"
 //#include "src/view/mainwindow.h"
 

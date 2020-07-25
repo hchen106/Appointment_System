@@ -1,6 +1,6 @@
-#include "src/view/UI.h"
+#include "view/UI.h"
 #include "ui_login.h"
-#include "src/controller/LoginUIController.h"
+#include "controller/LoginUIController.h"
 
 LoginUI::LoginUI(QWidget *parent): QMainWindow(parent), ui(new Ui::LoginUI)
 {   
