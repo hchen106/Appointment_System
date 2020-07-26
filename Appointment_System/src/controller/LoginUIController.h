@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <boost/asio.hpp>
+#include <vector>
 
 namespace Controller{
 
@@ -14,15 +15,15 @@ namespace Controller{
 
             //~LoginUIController();
 
-            int TcpConnection();
+            void TcpConnection();
 
-            std::string isVertified();
-
+            std::string isVertified(std::string,std::string);
+            
             //Provider CreateProvider(){}
         private:
             std::string IP;
             int PORT;
-            int tcp_socket;
+            boost::shared_ptr<boost::asio::ip::tcp::socket> tcp_socket;
 
     };
 

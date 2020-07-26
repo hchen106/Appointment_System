@@ -3,6 +3,7 @@
 #include <QSqlRecord>
 #include <QSqlError>
 #include <QDebug>
+#include <iostream>
 
 
 DbManager::DbManager(const QString &path) {
@@ -48,6 +49,7 @@ bool DbManager::signupAccount(const QString& name, const QString& loginID, const
 bool DbManager::loginAccount(const QString& loginID, const QString& password) {
     bool success = false;
     QSqlQuery query;
+    std::cout << loginID.toUtf8().constData() << std::endl;
     query.prepare("SELECT loginID FROM PROVIDER WHERE loginID = (:loginID) AND password = (:password)");
     query.bindValue(":loginID", loginID);
     query.bindValue(":password", password);

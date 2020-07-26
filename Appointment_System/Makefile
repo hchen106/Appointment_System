@@ -134,8 +134,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		Appointment_System.pro ui_login.h \
-		ui_login_ui.h \
+		Appointment_System.pro ui_login_ui.h \
 		ui_mainsignup.h \
 		src/controller/LoginUIController.h \
 		src/view/UI.h main.cpp \
@@ -326,7 +325,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ui_login.h ui_login_ui.h ui_mainsignup.h src/controller/LoginUIController.h src/view/UI.h $(DISTDIR)/
+	$(COPY_FILE) --parents ui_login_ui.h ui_mainsignup.h src/controller/LoginUIController.h src/view/UI.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp src/controller/LoginUIController.cpp src/model/Provider.cpp src/model/User.cpp src/view/loginUI.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents src/view/login.ui $(DISTDIR)/
 

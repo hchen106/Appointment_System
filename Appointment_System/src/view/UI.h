@@ -19,10 +19,16 @@ class LoginUI : public QMainWindow
         LoginUI(QWidget *parent = nullptr);
         ~LoginUI();
 
+    private slots:
+        void on_login_btn_clicked();
+
     private:
         std::string IP;
         int PORT;
         Ui::LoginUI *ui;
+        Controller::LoginUIController *controller;
+        std::string get_text(QString);
+    
 };
 
 //TODO: MainWindowUI
