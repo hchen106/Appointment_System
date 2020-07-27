@@ -74,9 +74,9 @@ bool DbManager::checkExist(const QString& loginID) {
     return success;
 }
 
-bool DbManager::addNewClient(const QString& name, const QString& birthday, const QString& email, const QString& provider, const QString phone, const QString& address) {
+bool DbManager::addNewClient(const QString& name, const QString& birthday, const QString& email, const QString& provider, const QString phone, const QString& address, const QString& providerID) {
     bool success = false;
-    QString providerid = "1997hao";
+    //QString providerid = "1997hao";
     QSqlQuery query;
     query.prepare("INSERT INTO client (name, birthday, email, address, provider, providerid, phone) VALUES (:name, :birthday, :email, :address, :provider, :providerid, :phone)");
     qDebug() <<"add prepare" << query.lastError();
@@ -85,7 +85,7 @@ bool DbManager::addNewClient(const QString& name, const QString& birthday, const
     query.bindValue(":email", email);
     query.bindValue(":address", address);
     query.bindValue(":provider", provider);
-    query.bindValue(":providerid", providerid);
+    query.bindValue(":providerid", providerID);
     query.bindValue(":phone", phone);
     if(query.exec()) {
         success = true;
@@ -94,7 +94,12 @@ bool DbManager::addNewClient(const QString& name, const QString& birthday, const
     }
     return success;
 
-
-
 }
 
+  QSqlQuery DbManager::getClientList(QString& loginID) {
+      QSqlQuery query;
+      query.prepare("SELECT name From client where providerid = (:providerid)");
+      query.bindValue(":providerid", loginID);
+      query.exec();
+      return query;
+  }

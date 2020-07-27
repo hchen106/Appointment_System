@@ -16,12 +16,19 @@ public:
     explicit addClient(QWidget *parent = nullptr);
     ~addClient();
 
+    void setLoginID(QString& loginid) {
+        id = loginid;
+    }
+    QString getLoginID() {
+        return id;
+    }
 
 private slots:
     void on_add_btn_clicked();
 
 private:
     Ui::addClient *ui;
+    QString id;
 };
 
 #endif // ADDCLIENT_H

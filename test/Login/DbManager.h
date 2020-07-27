@@ -2,6 +2,7 @@
 #define DBMANGER_H
 #include <QString>
 #include <QSqlDatabase>
+#include <QSqlQuery>
 
 class DbManager {
 public:
@@ -14,9 +15,9 @@ public:
 
         bool checkExist(const QString& loginID);
 
-        bool addNewClient(const QString& name, const QString& birthday, const QString& email, const QString& provider, const QString phone, const QString& address);
+        bool addNewClient(const QString& name, const QString& birthday, const QString& email, const QString& provider, const QString phone, const QString& address, const QString& providerID);
 
-
+        QSqlQuery getClientList(QString& loginID);
 
 
 

@@ -4,7 +4,7 @@
 #include "DbManager.h"
 #include <QMessageBox>
 #include <QDebug>
-static const QString path = "/home/huihao/Desktop/newclone/Appointment_System/test/Login/provider.db";
+static const QString path = "/home/huihao/Desktop/myDB/Appointment_System/test/Login/provider.db";
 
 
 Login_UI::Login_UI(QWidget *parent)
@@ -41,6 +41,7 @@ void Login_UI::on_login_btn_clicked()
 
     if(db.loginAccount(loginID, password)) {
         mainwindow = new MainWindow(this);
+        mainwindow->setLoginID(loginID);
         mainwindow->show();
         this->hide();
         //QMessageBox::information(this, "Login", "Login Successful");

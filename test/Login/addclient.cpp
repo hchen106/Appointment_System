@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QString>
-static const QString path = "/home/huihao/Desktop/newclone/Appointment_System/test/Login/provider.db";
+static const QString path = "/home/huihao/Desktop/myDB/Appointment_System/test/Login/provider.db";
 
 addClient::addClient(QWidget *parent) :
     QMainWindow(parent),
@@ -28,8 +28,9 @@ void addClient::on_add_btn_clicked()
     QString phone = ui->add_phone_entry->text();
     QString birthday = ui->add_birthday_entry->text();
     QString provider = ui->provider_entry->text();
+    QString providerID = getLoginID();
 
-    if(db.addNewClient(name, birthday, email, provider, phone, address)){
+    if(db.addNewClient(name, birthday, email, provider, phone, address, providerID)){
         QMessageBox::information(this, "add", "Client is Successfully added");
     }else{
         QMessageBox::information(this, "add", "Client is fail to add");
