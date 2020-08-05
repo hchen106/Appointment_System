@@ -1,14 +1,16 @@
 #include "UI.h"
 #include "ui_login.h"
 #include "src/controller/LoginUIController.h"
+#include <boost/asio.hpp>
 
 LoginUI::LoginUI(QWidget *parent): QMainWindow(parent), ui(new Ui::LoginUI)
 {   
-    this->IP = "192.168.1.9";
-    this->PORT = 8002;
+    this->IP = "192.168.1.10";
+    this->PORT = 8003;
     std::cout << this->IP  + " " + std::to_string(this->PORT) << std::endl;
-    this->controller = new Controller::LoginUIController(this->IP, this->PORT);
     ui->setupUi(this);
+    boost::asio::io_service io_service;
+    this->controller = new Controller::LoginUIController(this->IP, this->PORT,io_service);
 }
 
 LoginUI::~LoginUI()

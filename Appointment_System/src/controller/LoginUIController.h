@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <boost/asio.hpp>
+#include <boost/array.hpp>
 #include <vector>
 
 namespace Controller{
@@ -11,7 +12,7 @@ namespace Controller{
     class LoginUIController{
         
         public: 
-            LoginUIController(std::string, int);
+            LoginUIController(std::string, int, boost::asio::io_service&);
 
             //~LoginUIController();
 
@@ -23,7 +24,9 @@ namespace Controller{
         private:
             std::string IP;
             int PORT;
-            boost::shared_ptr<boost::asio::ip::tcp::socket> tcp_socket;
+            //boost::shared_ptr<boost::asio::ip::tcp::socket> tcp_socket;
+            boost::asio::io_service& io_service_;
+            boost::asio::ip::tcp::socket socket_;
 
     };
 

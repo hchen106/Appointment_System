@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include <boost/asio.hpp>
+#include <boost/enable_shared_from_this.hpp>
+#include <boost/shared_ptr.hpp> 
+#include <boost/bind/bind.hpp>
+#include <boost/array.hpp>
+#include <string>
 #include <vector>
 #include "DbManager.h"
 //#include <QString>
@@ -10,27 +15,60 @@
 
 using namespace boost::asio;
 
-class server {
+namespace server {
 
-    //TODO:
+    class tcp_connection : public boost::enable_shared_from_this<tcp_connection>{
+        public: 
+            typedef boost::shared_ptr<tcp_connection> pointer;
 
-    public: 
-        server();
+            static pointer create(boost::asio::io_service&);
 
-        void wait_for_connection();
+            ip::tcp::socket& socket();
 
-        std::string read(ip::tcp::socket&);
+            //ip::tcp::socket get_Socket();
+            void handler();
+            void handle_write(tcp_connection::pointer);
+            void wait_for_response(tcp_connection::pointer);
+            void vertify(boost::array<char,128>);
+        
+        private: 
+            tcp_connection(boost::asio::io_service&);
+            ip::tcp::socket socket_;
+            std::string message;
+            boost::array<char, 128> buf;
+    };
 
-    private:
-        std::map<std::string ,ip::tcp::socket > tcp_socket_list;
-        int PORT;
+    class tcp_server {
+        public: 
+            tcp_server(boost::asio::io_service&);
+        private: 
+            void start_accept();
+            void handle_accept(server::tcp_connection::pointer, const boost::system::error_code&);
+            
+            boost::asio::io_service& io_service_;
+            ip::tcp::acceptor acceptor_;
+            bool stop;
+            typedef std::pair<std::string, tcp_connection::pointer> socket;
+            std::vector<socket> socket_list;
+            
+    };
 
-        boost::shared_ptr<boost::asio::ip::tcp::socket> tcp_socket;
+    class message_command {
+        public:
+            message_command();
+            void encode();
+            std::vector<std::string> decode(std::string);
 
-        bool vertified(std::string, std::string);
+            std::string get_User();
+            std::string get_Command();
 
-        void wait_for_response();
-        std::vector<std::string>  decriptMessage(std::string ); 
+        private:
+            std::string user;
+            std::string command;
+    };
+
+    
+    
 
 
 
