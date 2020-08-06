@@ -18,10 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += addclient.h DbManager.h login_ui.h mainsignup.h mainwindow.h
-FORMS += addclient.ui login_ui.ui mainsignup.ui mainwindow.ui
+HEADERS += addclient.h DbManager.h login_ui.h mainsignup.h mainwindow.h \
+    editclient.h
+FORMS += addclient.ui login_ui.ui mainsignup.ui mainwindow.ui \
+    editclient.ui
 SOURCES += addclient.cpp \
            DbManager.cpp \
+           editclient.cpp \
            login_ui.cpp \
            main.cpp \
            mainsignup.cpp \

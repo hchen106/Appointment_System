@@ -1,8 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "addclient.h"
+#include "editclient.h"
 #include "DbManager.h"
+#include <algorithm>
 #include <QSqlQuery>
+#include <string>
 #include <QSqlQueryModel>
 #include <iostream>
 #include <QDebug>
@@ -39,4 +42,19 @@ void MainWindow::on_refresh_btn_clicked()
     QSqlQueryModel * modal = new QSqlQueryModel();
     modal->setQuery(qry);
     ui->listView->setModel(modal);
+}
+
+void MainWindow::on_listView_clicked(const QModelIndex &index)
+{
+    
+    QModelIndexList temp_list = ui->listView->selectionModel()->selectedIndexes();
+    QStringList stringlist;
+    foreach(const QModelIndex &index, temp_list) {
+        stringlist.append(index.data(Qt::DisplayRole).toString());
+    } 
+    qDebug() << stringlist.join("");
+    edit = new editclient(this);
+    QString name = stringlist.join("");
+    edit->setName(name);
+    edit->show();
 }
