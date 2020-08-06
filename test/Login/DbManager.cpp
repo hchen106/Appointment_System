@@ -118,16 +118,16 @@ bool DbManager::updateClientInfo(const QString& id, const QString& name, const Q
 
 QSqlQuery DbManager::getClientList(QString& loginID) {
     QSqlQuery query;
-    query.prepare("SELECT name From client where providerid = (:providerid)");
+    query.prepare("SELECT id, name, phone, email From client where providerid = (:providerid)");
     query.bindValue(":providerid", loginID);
     query.exec();
     return query;
 }
 
-QString DbManager::getClientInfo(QString& name) {
+QString DbManager::getClientInfo(QString& id) {
     QSqlQuery query;
-    query.prepare("SELECT * FROM client where name = (:name)");
-    query.bindValue(":name", name);
+    query.prepare("SELECT * FROM client where id = (:id)");
+    query.bindValue(":id", id);
     QString info = "";
     if(query.exec()) {
         while(query.next()) {

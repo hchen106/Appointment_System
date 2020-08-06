@@ -43,11 +43,11 @@
      <attribute name="title">
       <string>List</string>
      </attribute>
-     <widget class="QListView" name="listView">
+     <widget class="QTableView" name="listView">
       <property name="geometry">
        <rect>
-        <x>5</x>
-        <y>11</y>
+        <x>10</x>
+        <y>10</y>
         <width>641</width>
         <height>531</height>
        </rect>

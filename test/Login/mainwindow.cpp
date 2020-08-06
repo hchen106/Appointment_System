@@ -17,6 +17,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->listView->verticalHeader()->hide();
+    ui->listView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->listView->horizontalHeader()->setStretchLastSection(true);
+    ui->listView->selectRow(0);
+    ui->listView->setSelectionMode(QAbstractItemView::SingleSelection);
 }
 
 MainWindow::~MainWindow()
@@ -47,11 +52,13 @@ void MainWindow::on_refresh_btn_clicked()
 void MainWindow::on_listView_clicked(const QModelIndex &index)
 {
     
-    QModelIndexList temp_list = ui->listView->selectionModel()->selectedIndexes();
+    QModelIndex temp_list = ui->listView->selectionModel()->selectedRows(0).at(0);
+    
     QStringList stringlist;
-    foreach(const QModelIndex &index, temp_list) {
-        stringlist.append(index.data(Qt::DisplayRole).toString());
-    } 
+    //foreach(const QModelIndex &index, temp_list) {
+    //    stringlist.append(index.data(Qt::DisplayRole).toString());
+    //} 
+    stringlist.append(temp_list.data(Qt::DisplayRole).toString());
     qDebug() << stringlist.join("");
     edit = new editclient(this);
     QString name = stringlist.join("");

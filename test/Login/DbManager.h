@@ -19,7 +19,7 @@ public:
 
         QSqlQuery getClientList(QString& loginID);
 
-        QString getClientInfo(QString& name);
+        QString getClientInfo(QString& id);
 
         bool updateClientInfo(const QString& id, const QString& name, const QString& birthday, const QString& email, const QString& provider, const QString& phone, const QString& address);
 
