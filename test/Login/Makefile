@@ -54,27 +54,39 @@ OBJECTS_DIR   = ./
 
 SOURCES       = addclient.cpp \
 		DbManager.cpp \
+		appointmentsetting.cpp \
+		clientwidget.cpp \
 		editclient.cpp \
 		login_ui.cpp \
 		main.cpp \
 		mainsignup.cpp \
-		mainwindow.cpp moc_addclient.cpp \
+		mainwindow.cpp \
+		timeslot.cpp moc_addclient.cpp \
 		moc_login_ui.cpp \
 		moc_mainsignup.cpp \
 		moc_mainwindow.cpp \
-		moc_editclient.cpp
+		moc_appointmentsetting.cpp \
+		moc_clientwidget.cpp \
+		moc_editclient.cpp \
+		moc_timeslot.cpp
 OBJECTS       = addclient.o \
 		DbManager.o \
+		appointmentsetting.o \
+		clientwidget.o \
 		editclient.o \
 		login_ui.o \
 		main.o \
 		mainsignup.o \
 		mainwindow.o \
+		timeslot.o \
 		moc_addclient.o \
 		moc_login_ui.o \
 		moc_mainsignup.o \
 		moc_mainwindow.o \
-		moc_editclient.o
+		moc_appointmentsetting.o \
+		moc_clientwidget.o \
+		moc_editclient.o \
+		moc_timeslot.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -155,13 +167,19 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		login_ui.h \
 		mainsignup.h \
 		mainwindow.h \
-		editclient.h addclient.cpp \
+		appointmentsetting.h \
+		clientwidget.h \
+		editclient.h \
+		timeslot.h addclient.cpp \
 		DbManager.cpp \
+		appointmentsetting.cpp \
+		clientwidget.cpp \
 		editclient.cpp \
 		login_ui.cpp \
 		main.cpp \
 		mainsignup.cpp \
-		mainwindow.cpp
+		mainwindow.cpp \
+		timeslot.cpp
 QMAKE_TARGET  = Login
 DESTDIR       = 
 TARGET        = Login
@@ -170,7 +188,7 @@ TARGET        = Login
 first: all
 ####### Build rules
 
-Login: ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h ui_editclient.h $(OBJECTS)  
+Login: ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h ui_appointmentsetting.h ui_clientwidget.h ui_editclient.h ui_timeslot.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: Login.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -341,9 +359,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents addclient.h DbManager.h login_ui.h mainsignup.h mainwindow.h editclient.h $(DISTDIR)/
-	$(COPY_FILE) --parents addclient.cpp DbManager.cpp editclient.cpp login_ui.cpp main.cpp mainsignup.cpp mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents addclient.ui login_ui.ui mainsignup.ui mainwindow.ui editclient.ui $(DISTDIR)/
+	$(COPY_FILE) --parents addclient.h DbManager.h login_ui.h mainsignup.h mainwindow.h appointmentsetting.h clientwidget.h editclient.h timeslot.h $(DISTDIR)/
+	$(COPY_FILE) --parents addclient.cpp DbManager.cpp appointmentsetting.cpp clientwidget.cpp editclient.cpp login_ui.cpp main.cpp mainsignup.cpp mainwindow.cpp timeslot.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents addclient.ui login_ui.ui mainsignup.ui mainwindow.ui appointmentsetting.ui clientwidget.ui editclient.ui timeslot.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -375,9 +393,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_addclient.cpp moc_login_ui.cpp moc_mainsignup.cpp moc_mainwindow.cpp moc_editclient.cpp
+compiler_moc_header_make_all: moc_addclient.cpp moc_login_ui.cpp moc_mainsignup.cpp moc_mainwindow.cpp moc_appointmentsetting.cpp moc_clientwidget.cpp moc_editclient.cpp moc_timeslot.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_addclient.cpp moc_login_ui.cpp moc_mainsignup.cpp moc_mainwindow.cpp moc_editclient.cpp
+	-$(DEL_FILE) moc_addclient.cpp moc_login_ui.cpp moc_mainsignup.cpp moc_mainwindow.cpp moc_appointmentsetting.cpp moc_clientwidget.cpp moc_editclient.cpp moc_timeslot.cpp
 moc_addclient.cpp: addclient.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -389,6 +407,8 @@ moc_login_ui.cpp: login_ui.h \
 		addclient.h \
 		DbManager.h \
 		editclient.h \
+		timeslot.h \
+		appointmentsetting.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/myDB/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include login_ui.h -o moc_login_ui.cpp
@@ -402,22 +422,39 @@ moc_mainwindow.cpp: mainwindow.h \
 		addclient.h \
 		DbManager.h \
 		editclient.h \
+		timeslot.h \
+		appointmentsetting.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/myDB/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+
+moc_appointmentsetting.cpp: appointmentsetting.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/myDB/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include appointmentsetting.h -o moc_appointmentsetting.cpp
+
+moc_clientwidget.cpp: clientwidget.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/myDB/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include clientwidget.h -o moc_clientwidget.cpp
 
 moc_editclient.cpp: editclient.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/myDB/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include editclient.h -o moc_editclient.cpp
 
+moc_timeslot.cpp: timeslot.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/huihao/Desktop/myDB/Appointment_System/test/Login/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/home/huihao/Desktop/myDB/Appointment_System/test/Login -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include timeslot.h -o moc_timeslot.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h ui_editclient.h
+compiler_uic_make_all: ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h ui_appointmentsetting.h ui_clientwidget.h ui_editclient.h ui_timeslot.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h ui_editclient.h
+	-$(DEL_FILE) ui_addclient.h ui_login_ui.h ui_mainsignup.h ui_mainwindow.h ui_appointmentsetting.h ui_clientwidget.h ui_editclient.h ui_timeslot.h
 ui_addclient.h: addclient.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic addclient.ui -o ui_addclient.h
@@ -434,9 +471,21 @@ ui_mainwindow.h: mainwindow.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic mainwindow.ui -o ui_mainwindow.h
 
+ui_appointmentsetting.h: appointmentsetting.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic appointmentsetting.ui -o ui_appointmentsetting.h
+
+ui_clientwidget.h: clientwidget.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic clientwidget.ui -o ui_clientwidget.h
+
 ui_editclient.h: editclient.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic editclient.ui -o ui_editclient.h
+
+ui_timeslot.h: timeslot.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic timeslot.ui -o ui_timeslot.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -456,8 +505,18 @@ addclient.o: addclient.cpp addclient.h \
 DbManager.o: DbManager.cpp DbManager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DbManager.o DbManager.cpp
 
+appointmentsetting.o: appointmentsetting.cpp appointmentsetting.h \
+		ui_appointmentsetting.h \
+		DbManager.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o appointmentsetting.o appointmentsetting.cpp
+
+clientwidget.o: clientwidget.cpp clientwidget.h \
+		ui_clientwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clientwidget.o clientwidget.cpp
+
 editclient.o: editclient.cpp editclient.h \
-		ui_editclient.h
+		ui_editclient.h \
+		DbManager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editclient.o editclient.cpp
 
 login_ui.o: login_ui.cpp login_ui.h \
@@ -466,6 +525,8 @@ login_ui.o: login_ui.cpp login_ui.h \
 		addclient.h \
 		DbManager.h \
 		editclient.h \
+		timeslot.h \
+		appointmentsetting.h \
 		ui_login_ui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login_ui.o login_ui.cpp
 
@@ -474,7 +535,9 @@ main.o: main.cpp login_ui.h \
 		mainwindow.h \
 		addclient.h \
 		DbManager.h \
-		editclient.h
+		editclient.h \
+		timeslot.h \
+		appointmentsetting.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainsignup.o: mainsignup.cpp mainsignup.h \
@@ -486,8 +549,15 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		addclient.h \
 		DbManager.h \
 		editclient.h \
+		timeslot.h \
+		appointmentsetting.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
+
+timeslot.o: timeslot.cpp timeslot.h \
+		ui_timeslot.h \
+		DbManager.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o timeslot.o timeslot.cpp
 
 moc_addclient.o: moc_addclient.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_addclient.o moc_addclient.cpp
@@ -501,8 +571,17 @@ moc_mainsignup.o: moc_mainsignup.cpp
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
+moc_appointmentsetting.o: moc_appointmentsetting.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_appointmentsetting.o moc_appointmentsetting.cpp
+
+moc_clientwidget.o: moc_clientwidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_clientwidget.o moc_clientwidget.cpp
+
 moc_editclient.o: moc_editclient.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_editclient.o moc_editclient.cpp
+
+moc_timeslot.o: moc_timeslot.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_timeslot.o moc_timeslot.cpp
 
 ####### Install
 

@@ -2,7 +2,7 @@
 #define MAINSIGNUP_H
 
 #include <QMainWindow>
-
+#include <QTimeEdit>
 namespace Ui {
 class MainSignup;
 }

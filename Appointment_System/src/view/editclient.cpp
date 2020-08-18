@@ -1,10 +1,9 @@
-#include "editclient.h"
+#include "src/view/UI.h"
 #include "ui_editclient.h"
-#include "DbManager.h"
+#include "src/controller/DbManager.h"
 #include <QDebug>
 #include <QMessageBox>
-static const QString path = "/home/huihao/Desktop/myDB/Appointment_System/test/Login/provider.db";
-
+static const QString path = "/home/huihao/Desktop/myDB/Appointment_System/Appointment_System/src/controller/provider.db";
 editclient::editclient(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::editclient)
@@ -35,7 +34,7 @@ void editclient::on_update_btn_clicked()
     if(db.updateClientInfo(id, name, birthday, email, provider, phone, address)){
         QMessageBox::information(this, "add", "Client is Successfully updated");
     }else{
-        QMessageBox::warning(this, "add", "Client is fail to updated");
+        QMessageBox::information(this, "add", "Client is fail to updated");
     }
 }
 

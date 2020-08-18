@@ -19,16 +19,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Input
 HEADERS += addclient.h DbManager.h login_ui.h mainsignup.h mainwindow.h \
-    editclient.h
+    appointmentsetting.h \
+    clientwidget.h \
+    editclient.h \
+    timeslot.h
 FORMS += addclient.ui login_ui.ui mainsignup.ui mainwindow.ui \
-    editclient.ui
+    appointmentsetting.ui \
+    clientwidget.ui \
+    editclient.ui \
+    timeslot.ui
 SOURCES += addclient.cpp \
            DbManager.cpp \
+           appointmentsetting.cpp \
+           clientwidget.cpp \
            editclient.cpp \
            login_ui.cpp \
            main.cpp \
            mainsignup.cpp \
-           mainwindow.cpp
+           mainwindow.cpp \
+           timeslot.cpp
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql
 

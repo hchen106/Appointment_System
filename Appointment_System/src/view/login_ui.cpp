@@ -1,10 +1,9 @@
-#include "login_ui.h"
+#include "src/view/UI.h"
 #include "ui_login_ui.h"
-#include "mainsignup.h"
-#include "DbManager.h"
+#include "src/controller/DbManager.h"
 #include <QMessageBox>
 #include <QDebug>
-static const QString path = "/home/huihao/Desktop/myDB/Appointment_System/test/Login/provider.db";
+static const QString path = "/home/huihao/Desktop/myDB/Appointment_System/Appointment_System/src/controller/provider.db";
 
 
 Login_UI::Login_UI(QWidget *parent)
@@ -25,8 +24,8 @@ void Login_UI::on_signup_btn_clicked()
     //SecDialog signup;
     //signup.setModal(true);
     //signup.exec();
-    mainsignup = new MainSignup(this);
-    mainsignup->show();
+    signup = new Signup(this);
+    signup->show();
 
 
 }
@@ -43,7 +42,7 @@ void Login_UI::on_login_btn_clicked()
         mainwindow = new MainWindow(this);
         mainwindow->setLoginID(loginID);
         mainwindow->show();
-        this->destroy();
+        this->hide();
         //QMessageBox::information(this, "Login", "Login Successful");
     }else{
         QMessageBox::warning(this, "Login", "ID or Password is incorrect");

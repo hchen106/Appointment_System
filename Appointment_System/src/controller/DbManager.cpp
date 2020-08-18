@@ -187,10 +187,10 @@ QString DbManager::getTime(const QString& loginID) {
      query.bindValue(":min", min);
      if(query.exec()) {
         if(!query.next()) {
-            qDebug() << "false";
+            //qDebug() << "false";
         }else{
             exist = true;
-            qDebug() << "true";
+            //qDebug() << "true";
         }
     }else{
         qDebug() << "checkbooking fail" << query.lastError();

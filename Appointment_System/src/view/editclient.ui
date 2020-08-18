@@ -117,16 +117,6 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <tabstops>
-  <tabstop>add_name_entry</tabstop>
-  <tabstop>add_email_entry</tabstop>
-  <tabstop>add_phone_entry</tabstop>
-  <tabstop>add_birthday_entry</tabstop>
-  <tabstop>provider_entry</tabstop>
-  <tabstop>add_address_entry</tabstop>
-  <tabstop>load_btn</tabstop>
-  <tabstop>update_btn</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

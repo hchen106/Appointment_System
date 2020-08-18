@@ -1,18 +1,15 @@
-#include "mainwindow.h"
+#include "src/view/UI.h"
 #include "ui_mainwindow.h"
-#include "addclient.h"
-#include "editclient.h"
-#include "DbManager.h"
+#include "src/controller/DbManager.h"
 #include <algorithm>
 #include <QSqlQuery>
 #include <string>
 #include <QSqlQueryModel>
 #include <iostream>
 #include <QDebug>
-#include "timeslot.h"
-#include "clientwidget.h"
 
-static const QString path = "/home/huihao/Desktop/myDB/Appointment_System/test/Login/provider.db";
+
+static const QString path = "/home/huihao/Desktop/myDB/Appointment_System/Appointment_System/src/controller/provider.db";
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

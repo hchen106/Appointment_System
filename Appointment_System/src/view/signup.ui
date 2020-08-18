@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainSignup</class>
- <widget class="QMainWindow" name="MainSignup">
+ <class>Signup</class>
+ <widget class="QMainWindow" name="Signup">
   <property name="geometry">
    <rect>
     <x>0</x>
