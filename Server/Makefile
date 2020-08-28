@@ -17,7 +17,7 @@ CXX           = /Library/Developer/CommandLineTools/usr/bin/clang++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wall -Wextra -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -std=c++11 -O2 $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wall -Wextra -fPIC $(DEFINES)
-INCPATH       = -I. -I. -I/usr/local/Cellar/boost/1.73.0/include -I/usr/local/Cellar/qt/5.15.0/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers -I/usr/local/Cellar/qt/5.15.0/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I/usr/local/Cellar/qt/5.15.0/mkspecs/macx-clang -F/usr/local/Cellar/qt/5.15.0/lib
+INCPATH       = -I. -I. -I/usr/local/Cellar/boost/1.73.0/include -I/usr/local/opt/openssl@1.1/include -I/usr/local/Cellar/jsoncpp/1.9.3/include -I/usr/local/Cellar/qt/5.15.0/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.15.0/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers -I/usr/local/Cellar/qt/5.15.0/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I/usr/local/Cellar/qt/5.15.0/mkspecs/macx-clang -F/usr/local/Cellar/qt/5.15.0/lib
 QMAKE         = /usr/local/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = Server1.0.0
 DISTDIR = /Users/xinhaoxiao/Desktop/document/Appointment_System/Server/.tmp/Server1.0.0
 LINK          = /Library/Developer/CommandLineTools/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wl,-rpath,@executable_path/../Frameworks
-LIBS          = $(SUBLIBS) -F/usr/local/Cellar/qt/5.15.0/lib -L/usr/local/Cellar/boost/1.73.0/lib -lboost_chrono-mt -lboost_system -framework QtWidgets -framework QtGui -framework AppKit -framework Metal -framework QtSql -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL   
+LIBS          = $(SUBLIBS) -F/usr/local/Cellar/qt/5.15.0/lib -L/usr/local/Cellar/boost/1.73.0/lib -L/usr/local/opt/openssl@1.1/lib -L/usr/local/Cellar/jsoncpp/1.9.3/lib -lboost_chrono-mt -lboost_system -lssl -lcrypto -ljsoncpp -framework QtWidgets -framework QtGui -framework AppKit -framework Metal -framework QtSql -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL   
 AR            = /Library/Developer/CommandLineTools/usr/bin/ar cq
 RANLIB        = /Library/Developer/CommandLineTools/usr/bin/ranlib -s
 SED           = sed
@@ -2016,11 +2016,129 @@ server.o: server.cpp server.h \
 		/usr/local/Cellar/boost/1.73.0/include/boost/asio/windows/stream_handle.hpp \
 		/usr/local/Cellar/boost/1.73.0/include/boost/asio/write_at.hpp \
 		/usr/local/Cellar/boost/1.73.0/include/boost/asio/impl/write_at.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/enable_shared_from_this.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/smart_ptr/enable_shared_from_this.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/visit_each.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/core/is_same.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/storage.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind_template.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind_cc.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind_mf_cc.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind_mf2_cc.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/placeholders.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/context.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/context_base.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/openssl_types.hpp \
+		/usr/local/opt/openssl@1.1/include/openssl/conf.h \
+		/usr/local/opt/openssl@1.1/include/openssl/bio.h \
+		/usr/local/opt/openssl@1.1/include/openssl/e_os2.h \
+		/usr/local/opt/openssl@1.1/include/openssl/opensslconf.h \
+		/usr/local/opt/openssl@1.1/include/openssl/opensslv.h \
+		/usr/local/opt/openssl@1.1/include/openssl/crypto.h \
+		/usr/local/opt/openssl@1.1/include/openssl/safestack.h \
+		/usr/local/opt/openssl@1.1/include/openssl/stack.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ossl_typ.h \
+		/usr/local/opt/openssl@1.1/include/openssl/cryptoerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/symhacks.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ebcdic.h \
+		/usr/local/opt/openssl@1.1/include/openssl/bioerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/lhash.h \
+		/usr/local/opt/openssl@1.1/include/openssl/conferr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ssl.h \
+		/usr/local/opt/openssl@1.1/include/openssl/comp.h \
+		/usr/local/opt/openssl@1.1/include/openssl/comperr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509.h \
+		/usr/local/opt/openssl@1.1/include/openssl/buffer.h \
+		/usr/local/opt/openssl@1.1/include/openssl/buffererr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/evp.h \
+		/usr/local/opt/openssl@1.1/include/openssl/evperr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/objects.h \
+		/usr/local/opt/openssl@1.1/include/openssl/obj_mac.h \
+		/usr/local/opt/openssl@1.1/include/openssl/asn1.h \
+		/usr/local/opt/openssl@1.1/include/openssl/asn1err.h \
+		/usr/local/opt/openssl@1.1/include/openssl/bn.h \
+		/usr/local/opt/openssl@1.1/include/openssl/bnerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/objectserr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ec.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ecerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/rsa.h \
+		/usr/local/opt/openssl@1.1/include/openssl/rsaerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dsa.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dh.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dherr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dsaerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/sha.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509err.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509_vfy.h \
+		/usr/local/opt/openssl@1.1/include/openssl/pkcs7.h \
+		/usr/local/opt/openssl@1.1/include/openssl/pkcs7err.h \
+		/usr/local/opt/openssl@1.1/include/openssl/pem.h \
+		/usr/local/opt/openssl@1.1/include/openssl/pemerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/hmac.h \
+		/usr/local/opt/openssl@1.1/include/openssl/async.h \
+		/usr/local/opt/openssl@1.1/include/openssl/asyncerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ct.h \
+		/usr/local/opt/openssl@1.1/include/openssl/cterr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/sslerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ssl2.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ssl3.h \
+		/usr/local/opt/openssl@1.1/include/openssl/tls1.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dtls1.h \
+		/usr/local/opt/openssl@1.1/include/openssl/srtp.h \
+		/usr/local/opt/openssl@1.1/include/openssl/engine.h \
+		/usr/local/opt/openssl@1.1/include/openssl/rand.h \
+		/usr/local/opt/openssl@1.1/include/openssl/randerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ui.h \
+		/usr/local/opt/openssl@1.1/include/openssl/uierr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/err.h \
+		/usr/local/opt/openssl@1.1/include/openssl/engineerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509v3.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509v3err.h \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/openssl_init.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/impl/openssl_init.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/password_callback.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/verify_callback.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/verify_context.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/verify_mode.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/context.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/context.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/error.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/error.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/rfc2818_verification.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/rfc2818_verification.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/host_name_verification.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/host_name_verification.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/stream.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/buffered_handshake_op.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/engine.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/stream_base.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/impl/engine.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/handshake_op.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/io.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/stream_core.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/read_op.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/shutdown_op.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/write_op.hpp \
 		DbManager.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtCore.framework/Headers/QString \
 		/usr/local/Cellar/qt/5.15.0/lib/QtCore.framework/Headers/qstring.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/QSqlDatabase \
-		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/qsqldatabase.h
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/QSqlQueryModel \
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/json.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/config.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/allocator.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/version.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/json_features.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/forwards.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/reader.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/value.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/writer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o server.o server.cpp
 
 serverController.o: serverController.cpp server.h \
@@ -3207,11 +3325,129 @@ serverController.o: serverController.cpp server.h \
 		/usr/local/Cellar/boost/1.73.0/include/boost/asio/windows/stream_handle.hpp \
 		/usr/local/Cellar/boost/1.73.0/include/boost/asio/write_at.hpp \
 		/usr/local/Cellar/boost/1.73.0/include/boost/asio/impl/write_at.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/enable_shared_from_this.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/smart_ptr/enable_shared_from_this.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/visit_each.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/core/is_same.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/storage.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind_template.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind_cc.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind_mf_cc.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/bind_mf2_cc.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/bind/placeholders.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/context.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/context_base.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/openssl_types.hpp \
+		/usr/local/opt/openssl@1.1/include/openssl/conf.h \
+		/usr/local/opt/openssl@1.1/include/openssl/bio.h \
+		/usr/local/opt/openssl@1.1/include/openssl/e_os2.h \
+		/usr/local/opt/openssl@1.1/include/openssl/opensslconf.h \
+		/usr/local/opt/openssl@1.1/include/openssl/opensslv.h \
+		/usr/local/opt/openssl@1.1/include/openssl/crypto.h \
+		/usr/local/opt/openssl@1.1/include/openssl/safestack.h \
+		/usr/local/opt/openssl@1.1/include/openssl/stack.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ossl_typ.h \
+		/usr/local/opt/openssl@1.1/include/openssl/cryptoerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/symhacks.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ebcdic.h \
+		/usr/local/opt/openssl@1.1/include/openssl/bioerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/lhash.h \
+		/usr/local/opt/openssl@1.1/include/openssl/conferr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ssl.h \
+		/usr/local/opt/openssl@1.1/include/openssl/comp.h \
+		/usr/local/opt/openssl@1.1/include/openssl/comperr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509.h \
+		/usr/local/opt/openssl@1.1/include/openssl/buffer.h \
+		/usr/local/opt/openssl@1.1/include/openssl/buffererr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/evp.h \
+		/usr/local/opt/openssl@1.1/include/openssl/evperr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/objects.h \
+		/usr/local/opt/openssl@1.1/include/openssl/obj_mac.h \
+		/usr/local/opt/openssl@1.1/include/openssl/asn1.h \
+		/usr/local/opt/openssl@1.1/include/openssl/asn1err.h \
+		/usr/local/opt/openssl@1.1/include/openssl/bn.h \
+		/usr/local/opt/openssl@1.1/include/openssl/bnerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/objectserr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ec.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ecerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/rsa.h \
+		/usr/local/opt/openssl@1.1/include/openssl/rsaerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dsa.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dh.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dherr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dsaerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/sha.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509err.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509_vfy.h \
+		/usr/local/opt/openssl@1.1/include/openssl/pkcs7.h \
+		/usr/local/opt/openssl@1.1/include/openssl/pkcs7err.h \
+		/usr/local/opt/openssl@1.1/include/openssl/pem.h \
+		/usr/local/opt/openssl@1.1/include/openssl/pemerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/hmac.h \
+		/usr/local/opt/openssl@1.1/include/openssl/async.h \
+		/usr/local/opt/openssl@1.1/include/openssl/asyncerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ct.h \
+		/usr/local/opt/openssl@1.1/include/openssl/cterr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/sslerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ssl2.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ssl3.h \
+		/usr/local/opt/openssl@1.1/include/openssl/tls1.h \
+		/usr/local/opt/openssl@1.1/include/openssl/dtls1.h \
+		/usr/local/opt/openssl@1.1/include/openssl/srtp.h \
+		/usr/local/opt/openssl@1.1/include/openssl/engine.h \
+		/usr/local/opt/openssl@1.1/include/openssl/rand.h \
+		/usr/local/opt/openssl@1.1/include/openssl/randerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/ui.h \
+		/usr/local/opt/openssl@1.1/include/openssl/uierr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/err.h \
+		/usr/local/opt/openssl@1.1/include/openssl/engineerr.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509v3.h \
+		/usr/local/opt/openssl@1.1/include/openssl/x509v3err.h \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/openssl_init.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/impl/openssl_init.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/password_callback.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/verify_callback.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/verify_context.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/verify_mode.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/context.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/context.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/error.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/error.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/rfc2818_verification.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/rfc2818_verification.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/host_name_verification.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/impl/host_name_verification.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/stream.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/buffered_handshake_op.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/engine.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/stream_base.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/impl/engine.ipp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/handshake_op.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/io.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/stream_core.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/read_op.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/shutdown_op.hpp \
+		/usr/local/Cellar/boost/1.73.0/include/boost/asio/ssl/detail/write_op.hpp \
 		DbManager.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtCore.framework/Headers/QString \
 		/usr/local/Cellar/qt/5.15.0/lib/QtCore.framework/Headers/qstring.h \
 		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/QSqlDatabase \
-		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/qsqldatabase.h
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/QSqlQueryModel \
+		/usr/local/Cellar/qt/5.15.0/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/json.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/config.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/allocator.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/version.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/json_features.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/forwards.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/reader.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/value.h \
+		/usr/local/Cellar/jsoncpp/1.9.3/include/json/writer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serverController.o serverController.cpp
 
 ####### Install

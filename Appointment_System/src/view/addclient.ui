@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addClientUI</class>
+ <widget class="QMainWindow" name="addClientUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>746</width>
+    <height>477</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="2" column="0">
+         <widget class="QLabel" name="phone_label">
+          <property name="text">
+           <string>Phone</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="name_label">
+          <property name="text">
+           <string>Name</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="add_email_entry"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="email_label">
+          <property name="text">
+           <string>Email</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="add_name_entry"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="add_phone_entry"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="birthday_label">
+          <property name="text">
+           <string>Birthday</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="add_birthday_entry"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="provider_label">
+          <property name="text">
+           <string>Provider</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="provider_entry"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="address_label">
+        <property name="text">
+         <string>Address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="add_address_entry"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="add_btn">
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>add_name_entry</tabstop>
+  <tabstop>add_email_entry</tabstop>
+  <tabstop>add_phone_entry</tabstop>
+  <tabstop>add_birthday_entry</tabstop>
+  <tabstop>provider_entry</tabstop>
+  <tabstop>add_address_entry</tabstop>
+  <tabstop>add_btn</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
