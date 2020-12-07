@@ -130,6 +130,36 @@ void tcp_connection::handle_read(server::tcp_connection::pointer new_connection,
         }
             
     }
+
+    if(mes.get_Command() == "checkBooking") {
+        DbManager db(path);
+        boost::array<char, 512> buf;
+        std::size_t len = boost::asio::read(new_connection->socket(),boost::asio::buffer(buf));
+        std::string dateInfo = buf.data();
+        std::cout << dateInfo << std::endl;
+        message_command date_message;
+        std::vector<std::string> date_list = date_message.decode(dateInfo);
+        QString date_str = QString::fromStdString(date_list[0]);
+        int hour = stoi(date_list[1]);
+        int min = stoi(date_list[2]);
+        std::cout << date_list[0] + " " + date_list[1] + " " + date_list[2] << std::endl;
+        if(db.checkBooking(date_str, hour, min)) {
+            send_message(new_connection,"True");
+        }else {
+            send_message(new_connection,"False");
+        }
+        tcp_connection::handler(new_connection);
+    }
+
+    if(mes.get_Command() == "getTime") {
+        DbManager db(path);
+        QString loginID = QString::fromStdString(mes.get_User());
+        QString timeinfo = db.getTime(loginID);
+        std::string str = timeinfo.toStdString();
+        send_message(new_connection,str);
+        tcp_connection::handler(new_connection);
+    }
+
     //std::cout << "done" << std::endl;
 
     if(mes.get_Command() == "logout") {

@@ -28,6 +28,17 @@ Controller::addClientController* Controller::MainWindowUIController::createAddCl
     return controller;
 }
 
+Controller::addAppointmentSettingController* Controller::MainWindowUIController::createAddAppointmentSetttingController() {
+    Controller::addAppointmentSettingController *controller = new Controller::addAppointmentSettingController(new_connection, loginID);
+    return controller;
+}
+
+Controller::TimeslotController* Controller::MainWindowUIController::createTimeslotController() {
+    Controller::TimeslotController *controller = new Controller::TimeslotController(new_connection,loginID);
+    return controller;
+}
+
+
 std::vector<Json::Value> Controller::MainWindowUIController::load() {
     std::string command = loginID + " loadall";
     std::cout << command << std::endl;

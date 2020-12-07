@@ -75,7 +75,17 @@ void MainWindowUI::on_add_btn_clicked()
     addclient->show();
 }
 
-
+void MainWindowUI::on_setting_btn_clicked()
+{
+    
+    appointmentsetting *setting = new appointmentsetting(this);
+    QString id = getLoginID();
+    Controller::addAppointmentSettingController *addController = mainController->createAddAppointmentSetttingController();
+    setting->createController(addController);
+    setting->setLoginID(id);
+    setting->show();
+    
+}
 
 void MainWindowUI::on_refresh_btn_clicked()
 {
@@ -120,4 +130,24 @@ void MainWindowUI::on_listView_clicked(const QModelIndex &index)
 {
     
     
+}
+
+void MainWindowUI::on_calendarWidget_clicked(const QDate &date)
+{
+    std::cout << "calender" << std::endl;
+    // qDebug() << ui->calendarWidget->selectedDate().toString("MM/dd/yyyy");
+    // DbManager db(path);
+    // QString loginID = getLoginID();
+    // QString timeinfo = db.getTime(loginID);
+    timeslot *slot = new timeslot(this);
+    QString id = getLoginID();
+    Controller::TimeslotController *timeslotController = mainController->createTimeslotController();
+    slot->createController(timeslotController);
+    slot->initialize(ui->calendarWidget->selectedDate().toString("MM/dd/yyyy"));
+    //slot->exec();
+    // //to-do getTime()
+    
+    // slot->setTimeinfo(timeinfo);
+    //slot->setDate();
+    // slot->exec();
 }

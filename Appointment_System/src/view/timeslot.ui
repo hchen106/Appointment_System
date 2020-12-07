@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>timeslot</class>
+ <widget class="QDialog" name="timeslot">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>714</width>
+    <height>387</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout" columnstretch="0">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+    </layout>
+   </item>
+   <item row="0" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="phone_entry"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="name_entry"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="phone_label">
+         <property name="text">
+          <string>Phone</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="name_label">
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="book_time_entry"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="book_label">
+         <property name="text">
+          <string>Book Time</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="email_entry"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="email_label">
+         <property name="text">
+          <string>Email</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="book_btn">
+       <property name="text">
+        <string>Book</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>name_entry</tabstop>
+  <tabstop>phone_entry</tabstop>
+  <tabstop>email_entry</tabstop>
+  <tabstop>book_time_entry</tabstop>
+  <tabstop>book_btn</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

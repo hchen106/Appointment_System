@@ -26,6 +26,17 @@ void LoginUI::closeEvent(QCloseEvent *event) {
     }
 }
 
+void LoginUI::on_signup_btn_clicked()
+{
+    //SecDialog signup;
+    //signup.setModal(true);
+    //signup.exec();
+    MainSignup *mainsignup = new MainSignup(this);
+    mainsignup->show();
+
+
+}
+
 void LoginUI::on_login_btn_clicked(){
     boost::asio::io_service io_service;
     boost::asio::ssl::context ctx(boost::asio::ssl::context::sslv23);

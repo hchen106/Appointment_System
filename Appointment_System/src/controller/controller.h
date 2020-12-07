@@ -17,6 +17,38 @@
 
 namespace Controller{
 
+    class signupController {
+
+        public: 
+
+        private: 
+        
+    };
+
+    class TimeslotController {
+        public: 
+            TimeslotController(tcpConnection::pointer, std::string);
+            QString getTime();
+            std::string read_message();
+            bool checkBooking(QString date ,int hour,int min);
+            
+        private: 
+            tcpConnection::pointer new_connection;
+            std::string loginID;
+    };
+
+    class addAppointmentSettingController{
+
+        public:
+            addAppointmentSettingController(tcpConnection::pointer, std::string);
+
+
+        private:
+            tcpConnection::pointer new_connection;
+            std::string loginID;
+
+    };
+
     class addClientController {
 
         public: 
@@ -42,6 +74,9 @@ namespace Controller{
 
 
             Controller::addClientController* createAddClientController();
+            Controller::addAppointmentSettingController* createAddAppointmentSetttingController();
+            Controller::TimeslotController* createTimeslotController();
+
         private:
             //boost::shared_ptr<boost::asio::ip::tcp::socket> tcp_socket;
             //boost::asio::io_service& io_service_;
