@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>addClient</class>
- <widget class="QMainWindow" name="addClient">
+ <class>addClientUI</class>
+ <widget class="QMainWindow" name="addClientUI">
   <property name="geometry">
    <rect>
     <x>0</x>
